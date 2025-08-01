@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     // 1) Instruct the model to return only a JSON array
     const completion = await openai.chat.completions.create({
       model: 'o3',
-      messages: [
+      /*messages: [
         {
           role: 'system',
           content: [
@@ -28,7 +28,29 @@ export default async function handler(req, res) {
             'Given the specification, produce exactly a JSON array of 25 objects, each object having `title`, `description`, and `rationale` fields.',
             'Do NOT include any markdown fences, numbering, explanatory text, or any other content—only output the raw JSON array.'
           ].join(' ')
-        },
+        },*/
+messages: [
+  {
+    role: 'system',
+    content: [
+      'You are an expert product manager in the Discovery phase of a product idea.',
+     'Generate 25 SACRIFICIAL CONCEPTS that each:',
+      '1) Solve the specified problem and consider the user frustrations,',
+     '2) Ultimately achieve their jobs-to-be-done (JTBD),',
+     '3) Are clearly better than any workarounds or solutions already tried,',
+     '4) Are realistic and usable for this persona and their context,',
+     '5) Explore a variety of solution types and technologies (e.g., chatbots, virtual reality, AI, marketplaces),',
+     '6) When relevant, adapt proven ideas from other industries.',
+      'Produce exactly a JSON array of 25 objects, each with `title`, `description`, and `rationale` fields.',
+      'Do NOT include markdown fences, numbering, explanatory text, or any other content—only output the raw JSON array.'
+    ].join(' ')
+  },
+
+
+
+
+
+
         {
           role: 'user',
           content: `Here is the enriched specification:\n${JSON.stringify(

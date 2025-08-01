@@ -16,7 +16,7 @@ function FormTextArea({ name, label, help, value, onChange }) {
         value={value}
         onChange={onChange}
         rows={2}
-        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        className="beveled-input"
       />
     </div>
   )
@@ -27,11 +27,11 @@ export default function Home() {
     personaDetails:
       'The persona is a mid-20s to early-40s urban professional who is time-starved, juggling a demanding career and social life, and who fears wasting emotional energy on low-value casual interactions while seeking a meaningful partnership.',
     problemDescription:
-      'Users feel like they’re working a second job responding to questions from other suitors on dating apps. Everyone is chasing everyone and there is a lot of ghosting. A lot of time is spent with messages figuring out if there is a match on values and interest, only for the other person to find someone else. This leads to burnout, wasted time.',
+      'Users feel like they\'re working a second job responding to questions from other suitors on dating apps.  A lot of time is spent with messages figuring out if there is a match on values and interest, only for the other person to find someone else. This leads to burnout, wasted time.',
     frustrations:
-      'The main frustrations are the relentless volume of questions that demand detailed responses, repetitive boilerplate prompts that feel insincere, anxiety about ghosting if replies aren’t instant, difficulty distinguishing casual flings from serious relationships, and spending so much time glued to the phone swiping right/left.',
+      'The main frustrations are the relentless volume of questions that demand responses, repetitive boilerplate prompts that feel insincere,  difficulty distinguishing casual flings from serious relationships, and spending so much time glued to the phone swiping right/left and writing messages.',
     jtbds:
-      'When they open the dating app, they want to find high-quality matches quickly with matching values and interests so they can go out on real dates that potentially lead to something more meaningful.',
+      'Users want to find high-quality matches quickly with matching values and interests so they can go out on real dates that potentially lead to something more meaningful.',
     workaround: 'There is no current workaround',
     otherSolutions: 'There are no other solutions',
     metricsToSwitch:
@@ -144,8 +144,8 @@ export default function Home() {
       </Head>
       <div className="min-h-screen bg-gray-50 py-10">
         <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
-          <h1 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
-            🌟 Sacrificial Concept Generator
+          <h1 className="text-3xl font-extrabold gradient-text mb-8 text-center">
+            Sacrificial Concept Generator
           </h1>
 
           {/* Discovery Form */}
@@ -181,7 +181,7 @@ export default function Home() {
             <FormTextArea
               name="workaround"
               label="Current Workaround"
-              help="How they do it today and why it’s suboptimal"
+              help="How they do it today and why it\'s suboptimal"
               value={form.workaround}
               onChange={handleChange}
             />
@@ -232,7 +232,7 @@ export default function Home() {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3 bg-blue-600 text-white rounded-md disabled:opacity-50"
+                className="primary-button"
               >
                 {loading ? 'Generating…' : 'Generate Ideas'}
               </button>
@@ -273,8 +273,10 @@ export default function Home() {
                       </button>
                       <button
                         onClick={() => toggleSelect(i)}
-                        className={`text-sm font-medium ${
-                          selected.has(i) ? 'text-red-600' : 'text-green-600'
+                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm ${
+                          selected.has(i) 
+                            ? 'bg-red-100 text-red-600 hover:bg-red-200' 
+                            : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md'
                         }`}
                       >
                         {selected.has(i) ? 'Deselect' : 'Select'}
@@ -298,7 +300,7 @@ export default function Home() {
                 <button
                   onClick={handleVisualize}
                   disabled={vizLoading || selected.size === 0}
-                  className="px-6 py-3 rounded-md text-white bg-green-600 disabled:bg-gray-400"
+                  className="primary-button bg-green-600 hover:bg-green-700"
                 >
                   {vizLoading ? 'Generating Sketches…' : 'Generate Sketches'}
                 </button>

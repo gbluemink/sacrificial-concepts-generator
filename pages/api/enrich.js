@@ -4,9 +4,13 @@ export default async function handler(req, res) {
 
   // Build a structured prompt requesting raw and enriched subfields
   const enrichmentPrompt = `
-Infer the underlying meaning of each user-provided field and enrich it with specific industry context, terminology, benchmarks, or examples. For each key in the input JSON, respond with an object containing:
+Infer the underlying meaning of each user-provided field and enrich it with specific industry context, terminology, benchmarks, or examples. 
+Clarify vague terms and/or descriptions. 
+NEVER change core meaning. 
+For each key in the input JSON, respond with an object containing:
   "raw": the original value
-  "enriched": a concise expansion reflecting the intended insights and domain details of the original value. If raw field is exactly 'none', N/A' or empty, the enriched value shall be the same as the raw 
+  "enriched": a concise expansion reflecting the intended insights and domain details of the original value. If raw field is exactly 'none', N/A' or empty, 
+  the enriched value shall be the same as the raw. 
 
 Provide ONLY valid JSON with no additional commentary.
 

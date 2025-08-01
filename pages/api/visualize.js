@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { concept, problem, personaDetails, model = 'dall-e-3' } = req.body
+    const { concept, problem, jtbds, personaDetails, model = 'dall-e-3' } = req.body
 
     // Create a focused prompt that shows the persona actively using the solution
     const prompt = `
@@ -22,16 +22,15 @@ Create a clear, professional illustration showing this exact scenario:
 
 This solution in action: ${concept.description}
 
-The image should clearly show how this solution is solving their problem: ${problem}
+The image should clearly show how this solution is reaching their goal: ${jtbds}
 
 Visual requirements:
 - Include visual elements that demonstrate the solution in action
 - Add relevant environmental details that make the scenario believable
 - Use a clean, modern illustration style with good color contrast
 - Make it immediately obvious how the solution works
-
-Do not include any text, titles, or labels in the image.
-Focus on visual storytelling that explains through action and context.
+- NEVER include any text, titles, or labels in the image.
+- Focus on visual storytelling that explains through action and context.
     `.trim()
 
     console.log('Generated prompt:', prompt)
